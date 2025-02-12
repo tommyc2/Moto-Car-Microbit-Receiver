@@ -8,12 +8,6 @@
  * 
  * The Car will only do what it knows how to do, the radio received block contains the different instructions the car can take currently.
  * 
- * s = stop
- * 
- * l = left
- * 
- * r = right
- * 
  * You can add more functionality by extending the if statement with the plus button.
  * 
  * You need to add the final piece which is driving the car forward
@@ -33,21 +27,21 @@
 // 
 // If the motors do not spin after pressing A you could have a hardware problem.
 radio.onReceivedValue(function (name, value) {
-    if (name == "s") {
+    if (name == "STOP") {
         motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
         motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
     }
-    if (name == "l") {
-        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 50)
+    if (name == "LEFT") {
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
         motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 0)
     }
-    if (name == "r") {
+    if (name == "RIGHT") {
         motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 0)
-        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 50)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 100)
     }
-    if (name == "f") {
-        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 50)
-        motobit.setMotorSpeed(Motor.Right, MotorDirection.Forward, 50)
+    if (name == "FORWARD") {
+        motobit.setMotorSpeed(Motor.Left, MotorDirection.Forward, 100)
+        motobit.setMotorSpeed(Motor.Right, MotorDirection.Reverse, 100)
     }
 })
 radio.setGroup(2)
